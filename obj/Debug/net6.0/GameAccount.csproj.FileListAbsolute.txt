@@ -1,0 +1,14 @@
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\bin\Debug\net6.0\GameAccount.exe
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\bin\Debug\net6.0\GameAccount.deps.json
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\bin\Debug\net6.0\GameAccount.runtimeconfig.json
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\bin\Debug\net6.0\GameAccount.dll
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\bin\Debug\net6.0\GameAccount.pdb
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\GameAccount.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\GameAccount.AssemblyInfoInputs.cache
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\GameAccount.AssemblyInfo.cs
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\GameAccount.csproj.CoreCompileInputs.cache
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\GameAccount.dll
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\refint\GameAccount.dll
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\GameAccount.pdb
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\GameAccount.genruntimeconfig.cache
+C:\Users\Vova\Documents\Visual Studio 2022\Projects\GameAccount\obj\Debug\net6.0\ref\GameAccount.dll
