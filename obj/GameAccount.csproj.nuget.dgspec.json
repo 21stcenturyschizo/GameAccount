@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\GameAccount\\GameAccount.csproj": {}
+    "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\gameAccount\\GameAccount.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\GameAccount\\GameAccount.csproj": {
+    "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\gameAccount\\GameAccount.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\GameAccount\\GameAccount.csproj",
+        "projectUniqueName": "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\gameAccount\\GameAccount.csproj",
         "projectName": "GameAccount",
-        "projectPath": "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\GameAccount\\GameAccount.csproj",
+        "projectPath": "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\gameAccount\\GameAccount.csproj",
         "packagesPath": "C:\\Users\\Vova\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\GameAccount\\obj\\",
+        "outputPath": "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\gameAccount\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Vova\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qSYlfGnt1G9ExqdAtAZ+kShXFK/27IS0KV9X6Fvw/gZdRdgxQMBEi+vQX9yQrKfaLjGDQkkueLM9TZuBXeJAwA==",
+  "dgSpecHash": "4dzb87lVAwZQ26Fac1W41hPMyihOBUFLXhGX8BFEXmsD5uiUjFkeaSTOXS4pWqLio/OLmREV4eH3fnS3lAshVQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\GameAccount\\GameAccount.csproj",
+  "projectFilePath": "C:\\Users\\Vova\\Documents\\Visual Studio 2022\\Projects\\gameAccount\\GameAccount.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
