@@ -63,36 +63,97 @@ class GameAccount
         GameAccount currentOpponent = GenerateOpponent(currentUser.currentRating);
         Console.WriteLine($"Your next opponent is \"{currentOpponent.userName}\" rated {currentOpponent.currentRating}.");
 
-        Console.WriteLine("   ...feeling lucky? (Y/N)");
+        Console.WriteLine("Rock, paper, scissors! (type either to proceed)");
         bool repeat = true;
         string result = "";
+
         do
         {
-            string option = Console.ReadLine() + "";
-            switch (option)
+            string userMove = Console.ReadLine() + "";
+            int userMoveIndex = 0;
+            switch (userMove)
             {
-                case "Y":
-                    currentUser.currentRating += (Math.Abs(currentOpponent.currentRating - currentUser.currentRating)) / 2;
-                    result = "win";
-                    Console.WriteLine($"Wow, you won! Your rating is now {currentUser.currentRating}.");
+                case "Rock":
+                case "rock":
+                case "R":
+                case "r":
+                case "1":
+                    userMoveIndex = 1;
                     repeat = false;
                     break;
-                case "N":
-                    currentUser.currentRating -= (currentOpponent.currentRating - currentUser.currentRating) / 2;
-                    if (currentUser.currentRating < 1) currentUser.currentRating = 1;
-                    result = "loss";
-                    Console.WriteLine($"Oh no, you lost. Your rating is now {currentUser.currentRating}.");
+                case "Paper":
+                case "paper":
+                case "P":
+                case "p":
+                case "2":
+                    userMoveIndex = 2;
                     repeat = false;
+                    break;
+                case "Scissors":
+                case "scissors":
+                case "S":
+                case "s":
+                case "3":
+                    userMoveIndex = 3;
+                    repeat = false;
+                    break;
+                default:
+                    Console.WriteLine("Wrong input.");
                     break;
             }
+
+            Random rnd = new Random();
+            int opponentMoveIndex = rnd.Next(1, 3);
+
+            if
+                (
+                (userMoveIndex == 1 && opponentMoveIndex == 3) ||
+                (userMoveIndex == 2 && opponentMoveIndex == 1) ||
+                (userMoveIndex == 3 && opponentMoveIndex == 2)
+                )
+            {
+                result = "win";
+            }
+
+            if
+                (
+                (userMoveIndex == 1 && opponentMoveIndex == 2) ||
+                (userMoveIndex == 2 && opponentMoveIndex == 3) ||
+                (userMoveIndex == 3 && opponentMoveIndex == 1)
+                )
+            {
+                result = "loss";
+            }
+            if (opponentMoveIndex == userMoveIndex)
+            {
+                Console.WriteLine("Its a tie!");
+                repeat = true;
+            }
+
         } while (repeat);
+
+
+        switch (result)
+        {
+            case "win":
+                currentUser.currentRating += (Math.Abs(currentOpponent.currentRating - currentUser.currentRating)) / 2;
+                Console.WriteLine($"Wow, you won! Your rating is now {currentUser.currentRating}.");
+                repeat = false;
+                break;
+            case "loss":
+                currentUser.currentRating -= (currentOpponent.currentRating - currentUser.currentRating) / 2;
+                if (currentUser.currentRating < 1) currentUser.currentRating = 1;
+                Console.WriteLine($"Oh no, you lost. Your rating is now {currentUser.currentRating}.");
+                repeat = false;
+                break;
+        }
 
         currentUser.gamesCount++;
         PlayerStats.Add(new PlayedGame
         {
             opponentName = currentOpponent.userName,
             gameResult = result,
-            gameRating = currentOpponent.currentRating,
+            gameRating = currentUser.currentRating,
             gameIndex = currentUser.gamesCount
         }); ;
     }
@@ -105,13 +166,12 @@ class GameAccount
         "Jonathan",
         "Steve",
         "Lewis",
-        "Lewis",
         "Abby",
         "Caroline",
         "Dan",
         "Emily",
         "Sandy",
-        "Gus"
+        "Sophie"
         };
         Random rnd = new Random();
         worthyOpponent.userName = namePool[rnd.Next(10)];
@@ -120,6 +180,16 @@ class GameAccount
 
         return worthyOpponent;
     }
+}
+
+class WinStreakAccount : GameAccount
+{
+
+}
+
+class StopLossAccount : GameAccount
+{
+
 }
 class PlayedGame
 {
