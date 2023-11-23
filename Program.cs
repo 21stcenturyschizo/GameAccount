@@ -21,19 +21,19 @@
 
             switch (option)
             {
-                case "1":                    
-                    PlayGame(currentUser, PlayerStats);
+                case "1":
+                    currentUser.PlayGame(currentUser, PlayerStats);
                     break;
-                case "2": 
+                case "2":
                     if (currentUser.gamesCount != 0)
                     {
-                    foreach (var game in PlayerStats)
-                    {
-                        Console.WriteLine($"Game number {game.gameIndex}" +
-                            $" against {game.opponentName}" +
-                            $" for {game.gameRating}" +
-                            $" rating points resulted in a {game.gameResult}.");
-                    }
+                        foreach (var game in PlayerStats)
+                        {
+                            Console.WriteLine($"Game number {game.gameIndex}" +
+                                $" against {game.opponentName}" +
+                                $" for {game.gameRating}" +
+                                $" rating points resulted in a {game.gameResult}.");
+                        }
                     }
                     else Console.WriteLine("No games played yet.");
                     break;
@@ -49,7 +49,16 @@
         } while (repeat);
 
     }
-    static void PlayGame(GameAccount currentUser, List<PlayedGame> PlayerStats)
+
+}
+class GameAccount
+{
+    public string userName = "";
+    public int currentRating = 1;
+    public int gamesCount = 0;
+    public int accountType = 0;
+
+    public void PlayGame(GameAccount currentUser, List<PlayedGame> PlayerStats)
     {
         GameAccount currentOpponent = GenerateOpponent(currentUser.currentRating);
         Console.WriteLine($"Your next opponent is \"{currentOpponent.userName}\" rated {currentOpponent.currentRating}.");
@@ -60,10 +69,10 @@
         do
         {
             string option = Console.ReadLine() + "";
-            switch(option)
+            switch (option)
             {
                 case "Y":
-                    currentUser.currentRating = currentOpponent.currentRating;
+                    currentUser.currentRating += (Math.Abs(currentOpponent.currentRating - currentUser.currentRating)) / 2;
                     result = "win";
                     Console.WriteLine($"Wow, you won! Your rating is now {currentUser.currentRating}.");
                     repeat = false;
@@ -86,11 +95,8 @@
             gameRating = currentOpponent.currentRating,
             gameIndex = currentUser.gamesCount
         }); ;
-
-        
     }
-
-    static GameAccount GenerateOpponent(int userRating)
+    public static GameAccount GenerateOpponent(int userRating)
     {
         GameAccount worthyOpponent = new GameAccount();
         string[] namePool =
@@ -109,18 +115,12 @@
         };
         Random rnd = new Random();
         worthyOpponent.userName = namePool[rnd.Next(10)];
-        worthyOpponent.currentRating = userRating + rnd.Next(10) + 1;
+        worthyOpponent.currentRating = userRating + rnd.Next(-10, 10);
+        if (worthyOpponent.currentRating < 1) worthyOpponent.currentRating = 1;
 
         return worthyOpponent;
     }
 }
-class GameAccount
-{
-    public string userName = "";
-    public int currentRating = 1;
-    public int gamesCount = 0;
-}
-
 class PlayedGame
 {
     public string opponentName = "";
