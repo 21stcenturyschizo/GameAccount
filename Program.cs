@@ -63,14 +63,23 @@ class GameAccount
         GameAccount currentOpponent = GenerateOpponent(currentUser.currentRating);
         Console.WriteLine($"Your next opponent is \"{currentOpponent.userName}\" rated {currentOpponent.currentRating}.");
 
-        Console.WriteLine("Rock, paper, scissors! (type either to proceed)");
-        bool repeat = true;
+        bool repeat;
         string result = "";
 
         do
         {
+            Console.WriteLine("Rock, paper, scissors! (type either to proceed)");
             string userMove = Console.ReadLine() + "";
-            int userMoveIndex = 0;
+            Random rnd = new Random();
+            int opponentMoveIndex = rnd.Next(1, 3); // rock, paper, scissors as 1, 2, 3 accordingly
+            string[] possibleMoves =
+            {
+                "rock",
+                "paper",
+                "scissors"
+            };
+            Console.WriteLine($"{currentOpponent.userName} played {possibleMoves[opponentMoveIndex - 1]}!");
+            repeat = false;
             switch (userMove)
             {
                 case "Rock":
@@ -78,58 +87,63 @@ class GameAccount
                 case "R":
                 case "r":
                 case "1":
-                    userMoveIndex = 1;
-                    repeat = false;
+                    switch (opponentMoveIndex)
+                    {
+                        case 1:
+                            Console.WriteLine("Its a tie!");
+                            repeat = true;
+                            break;
+                        case 2:
+                            result = "loss";
+                            break;
+                        case 3:
+                            result = "win";
+                            break;
+                    }
                     break;
                 case "Paper":
                 case "paper":
                 case "P":
                 case "p":
                 case "2":
-                    userMoveIndex = 2;
-                    repeat = false;
+                    switch (opponentMoveIndex)
+                    {
+                        case 1:
+                            result = "win";
+                            break;
+                        case 2:
+                            Console.WriteLine("Its a tie!");
+                            repeat = true;
+                            break;
+                        case 3:
+                            result = "loss";
+                            break;
+                    }
                     break;
                 case "Scissors":
                 case "scissors":
                 case "S":
                 case "s":
                 case "3":
-                    userMoveIndex = 3;
-                    repeat = false;
+                    switch (opponentMoveIndex)
+                    {
+                        case 1:
+                            result = "loss";
+                            break;
+                        case 2:
+                            result = "win";
+                            break;
+                        case 3:
+                            Console.WriteLine("Its a tie!");
+                            repeat = true;
+                            break;
+                    }
                     break;
                 default:
                     Console.WriteLine("Wrong input.");
+                    repeat = true;
                     break;
             }
-
-            Random rnd = new Random();
-            int opponentMoveIndex = rnd.Next(1, 3);
-
-            if
-                (
-                (userMoveIndex == 1 && opponentMoveIndex == 3) ||
-                (userMoveIndex == 2 && opponentMoveIndex == 1) ||
-                (userMoveIndex == 3 && opponentMoveIndex == 2)
-                )
-            {
-                result = "win";
-            }
-
-            if
-                (
-                (userMoveIndex == 1 && opponentMoveIndex == 2) ||
-                (userMoveIndex == 2 && opponentMoveIndex == 3) ||
-                (userMoveIndex == 3 && opponentMoveIndex == 1)
-                )
-            {
-                result = "loss";
-            }
-            if (opponentMoveIndex == userMoveIndex)
-            {
-                Console.WriteLine("Its a tie!");
-                repeat = true;
-            }
-
         } while (repeat);
 
 
