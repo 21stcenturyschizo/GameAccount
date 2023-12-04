@@ -147,20 +147,7 @@ class GameAccount
         } while (repeat);
 
 
-        switch (result)
-        {
-            case "win":
-                currentUser.currentRating += (Math.Abs(currentOpponent.currentRating - currentUser.currentRating)) / 2;
-                Console.WriteLine($"Wow, you won! Your rating is now {currentUser.currentRating}.");
-                repeat = false;
-                break;
-            case "loss":
-                currentUser.currentRating -= (currentOpponent.currentRating - currentUser.currentRating) / 2;
-                if (currentUser.currentRating < 1) currentUser.currentRating = 1;
-                Console.WriteLine($"Oh no, you lost. Your rating is now {currentUser.currentRating}.");
-                repeat = false;
-                break;
-        }
+        CalculateRating(result, currentUser, currentOpponent);
 
         currentUser.gamesCount++;
         PlayerStats.Add(new PlayedGame
@@ -190,10 +177,43 @@ class GameAccount
         Random rnd = new Random();
         worthyOpponent.userName = namePool[rnd.Next(10)];
         worthyOpponent.currentRating = userRating + rnd.Next(-10, 10);
-        if (worthyOpponent.currentRating < 1) worthyOpponent.currentRating = 1;
+        if (worthyOpponent.currentRating < 1) worthyOpponent.currentRating = 1 + rnd.Next(0, 10);
 
         return worthyOpponent;
     }
+
+    public static GameAccount CalculateRating(string result, GameAccount currentUser, GameAccount currentOpponent)
+    {
+        switch (result)
+        {
+            case "win":
+                if (currentUser.currentRating < currentOpponent.currentRating)
+                {
+                    currentUser.currentRating += ((currentOpponent.currentRating - currentUser.currentRating) / 2) + 3;
+                }
+                else
+                {
+                    currentUser.currentRating += (12 - (currentUser.currentRating - currentOpponent.currentRating)) / 4;
+                }
+                Console.WriteLine($"Wow, you won! Your rating is now {currentUser.currentRating}.");
+                break;
+            case "loss":
+                if (currentUser.currentRating > currentOpponent.currentRating)
+                {
+                    currentUser.currentRating -= ((currentUser.currentRating - currentOpponent.currentRating) / 2) + 3;
+                }
+                else
+                {
+                    currentUser.currentRating -= (12 - (currentOpponent.currentRating - currentUser.currentRating)) / 4;
+                }
+                if (currentUser.currentRating < 1) currentUser.currentRating = 1;
+                Console.WriteLine($"Oh no, you lost. Your rating is now {currentUser.currentRating}."); ;
+                break;
+        }
+
+        return currentUser;
+    }
+
 }
 
 class WinStreakAccount : GameAccount
